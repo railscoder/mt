@@ -5,4 +5,7 @@ RSpec.describe Company, type: :model do
 
   it { should have_many(:phones) }
   it { should have_many(:emails) }
+
+  it { should belong_to(:category) }
+  it { should belong_to(:city) }
 end

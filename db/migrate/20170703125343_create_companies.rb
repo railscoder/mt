@@ -4,6 +4,7 @@ class CreateCompanies < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :site, null: false
       t.string :full_url
+      t.string :source
 
       t.timestamps
     end
