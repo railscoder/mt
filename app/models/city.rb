@@ -1,6 +1,6 @@
 class City < ApplicationRecord
   has_many :companies
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
+  validates :eng_name, :rus_name, presence: true
+  validates :eng_name, :rus_name, uniqueness: true
 end

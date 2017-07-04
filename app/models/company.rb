@@ -1,10 +1,10 @@
 class Company < ApplicationRecord
-  has_many :emails
-  has_many :phones
+  has_many :emails, dependent: :destroy
+  has_many :phones, dependent: :destroy
 
   belongs_to :category
-  belongs_to :store
   belongs_to :city
 
   validates :site, presence: true
+  validates :site, uniqueness: true
 end

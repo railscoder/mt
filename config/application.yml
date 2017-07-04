@@ -1,0 +1,10 @@
+development: &development
+
+  gis:
+    url: "https://2gis.ru"
+    style:
+      header_title: ".miniCard__headerTitle"
+      result: ".searchResults__headerName"
+      name: ".cardHeader__headerNameText"
+      phone: ".contact__phonesItemLinkNumber"
+      site: "div.contact__websites a"

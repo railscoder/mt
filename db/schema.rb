@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 20170703135823) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "rus_name",   null: false
+    t.string   "eng_name",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170703135823) do
     t.string   "name"
     t.string   "site",        null: false
     t.string   "full_url"
+    t.string   "source"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"

@@ -39,6 +39,15 @@ gem 'jbuilder', '~> 2.5'
 gem "pg"
 # Database end
 
+# Settings
+gem "settingslogic"
+# end settings
+
+# Parsing
+gem "nokogiri"
+gem "mechanize"
+#end parsing
+
 group :test do
   gem "shoulda-matchers"
 end
