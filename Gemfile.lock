@@ -102,6 +102,7 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     ntlm-http (0.1.1)
+    open_uri_redirections (0.2.1)
     pg (0.20.0)
     puma (3.9.1)
     rack (2.0.3)
@@ -209,6 +210,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mechanize
   nokogiri
+  open_uri_redirections
   pg
   puma (~> 3.0)
   rails (~> 5.0.3)

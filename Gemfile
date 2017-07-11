@@ -46,6 +46,7 @@ gem "settingslogic"
 # Parsing
 gem "nokogiri"
 gem "mechanize"
+gem "open_uri_redirections"
 #end parsing
 
 group :test do

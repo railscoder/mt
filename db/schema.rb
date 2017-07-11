@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170703135823) do
     t.datetime "updated_at", null: false
     t.integer  "company_id"
     t.index ["company_id"], name: "index_emails_on_company_id", using: :btree
+    t.index ["value"], name: "index_emails_on_value", using: :btree
   end
 
   create_table "phones", force: :cascade do |t|
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170703135823) do
     t.datetime "updated_at", null: false
     t.integer  "company_id"
     t.index ["company_id"], name: "index_phones_on_company_id", using: :btree
+    t.index ["value"], name: "index_phones_on_value", using: :btree
   end
 
   add_foreign_key "companies", "categories"
