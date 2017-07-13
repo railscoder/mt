@@ -9,6 +9,7 @@ module ScanGisService
       while i < get_count_pages(url)
         scan_one_page(url, i, source)
         i += 1
+        sleep(5)
       end
     end
 
