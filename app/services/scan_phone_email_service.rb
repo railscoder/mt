@@ -4,7 +4,7 @@ module ScanPhoneEmailService
   class << self
     def call
       Company.find_each do |company|
-        return if comapny.emails
+        return if company.emails
         begin
           full_url = "http://" + company.site
           page = open_page(full_url)
