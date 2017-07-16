@@ -4,12 +4,16 @@ module ScanPhoneEmailService
   class << self
     def call
       Company.find_each do |company|
-        full_url = "http://" + company.site
-        page = open_page(full_url)
-        pp full_url
-        link_to_contact = get_contact_page(page, full_url)
-        email = get_email(page) || get_email(link_to_contact)
-        company.emails.create(value: email)
+        return if comapny.emails
+        begin
+          full_url = "http://" + company.site
+          page = open_page(full_url)
+          link_to_contact = get_contact_page(page, full_url)
+          email = get_email(page) || get_email(link_to_contact)
+          company.emails.create(value: email)
+        rescue Exception => e
+          LoggerService.call("Error - #{e} from #{full_url}")
+        end
       end
     end
 
@@ -20,7 +24,7 @@ module ScanPhoneEmailService
         html = open(url, :allow_redirections => :safe)
         doc = Nokogiri::HTML(html)
       rescue Exception => e
-        puts e
+        LoggerService.call(e)
       end
     end
 
