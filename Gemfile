@@ -47,7 +47,11 @@ gem "settingslogic"
 gem "nokogiri"
 gem "mechanize"
 gem "open_uri_redirections"
-#end parsing
+# end parsing
+
+# Begin workers
+gem "sidekiq"
+# end workers
 
 group :test do
   gem "shoulda-matchers"
