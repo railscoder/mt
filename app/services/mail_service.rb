@@ -1,7 +1,7 @@
 module MailService
   class << self
     def call
-      Email.find_each do |email|
+      Email.where(sended: false).find_each do |email|
         begin
           ActiveRecord::Base.transaction do
             CompanyMailer.welcome_letter(email.value).deliver_now
