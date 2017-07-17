@@ -3,7 +3,7 @@ module MailService
     def call
       Email.find_each do |email|
         begin
-          ActiveRecord::Base.transaction
+          ActiveRecord::Base.transaction do
             CompanyMailer.welcome_letter(email.value).deliver_now
             email.sended = true
             email.save
@@ -14,4 +14,5 @@ module MailService
         sleep(60)
       end
     end
+  end
 end
