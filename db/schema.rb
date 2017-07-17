@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703135823) do
+ActiveRecord::Schema.define(version: 20170717201413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,11 @@ ActiveRecord::Schema.define(version: 20170703135823) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string   "value",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "value",                      null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "company_id"
+    t.boolean  "sended",     default: false
     t.index ["company_id"], name: "index_emails_on_company_id", using: :btree
     t.index ["value"], name: "index_emails_on_value", using: :btree
   end
