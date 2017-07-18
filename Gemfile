@@ -51,6 +51,7 @@ gem "open_uri_redirections"
 
 # Begin workers
 gem "sidekiq"
+gem "redis"
 # end workers
 
 group :test do
