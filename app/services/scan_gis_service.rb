@@ -6,7 +6,7 @@ module ScanGisService
       @query, @city_id, @source = query, city_id, source
       count_pages = get_count_pages(get_url)
       i = 1
-      while i < 2
+      while i < count_pages
         scan_one_page(get_url, i)
         i += 1
         LoggerService.call("2gis error page - #{i}")
