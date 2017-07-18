@@ -8,3 +8,8 @@ development: &development
       name: ".cardHeader__headerNameText"
       phone: ".contact__phonesItemLinkNumber"
       site: "div.contact__websites a"
+
+  redis:
+    url: "redis://localhost:6379/0"
+    timeout: 10
+    thread_safe: true
