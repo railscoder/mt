@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+  has_many :emails, dependent: :destroy
   has_many :phones, dependent: :destroy
 
   belongs_to :category
