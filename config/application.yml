@@ -13,3 +13,8 @@ development: &development
     url: "redis://localhost:6379/0"
     timeout: 10
     thread_safe: true
+
+  yandex:
+    url: "https://yandex.ru/search/xml?user=mischineduard&key=03.306130378:89bd1172ce6ea5771e778ac3d1124ecb"
+    mirror_1: "http://0s.pfqw4zdfpaxhe5i.cmle.ru"
+    mirror_2: "http://0s.pfqw4zdfpaxhe5i.nblz.ru"
