@@ -3,7 +3,7 @@ module ScanPhoneEmailService
 
   class << self
     def call(service, category_id)
-      Company.where(email: nil, service: service, category_id: category_id).find_each do |company|
+      Company.where(email: nil, source: source, category_id: category_id).find_each do |company|
         find_email_on_site(company)
       end
     end
