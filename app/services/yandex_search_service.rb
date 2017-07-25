@@ -4,7 +4,7 @@ module YandexSearchService
       @query = query
       @city_id = city_id
       i = 0
-      while i < 80 do
+      while i < 100 do
         open_page(get_url(i))
         i += 1
         sleep(5)
