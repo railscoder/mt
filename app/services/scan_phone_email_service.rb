@@ -2,7 +2,7 @@ module ScanPhoneEmailService
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
 
   class << self
-    def call(service, category_id)
+    def call(source, category_id)
       Company.where(email: nil, source: source, category_id: category_id).find_each do |company|
         find_email_on_site(company)
       end
