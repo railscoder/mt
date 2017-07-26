@@ -1,9 +1,11 @@
 module MailService
+  SLEEP_TIME = 60
+
   class << self
-    def call
-      Company.where(sended: false).find_each do |company|
+    def call(category_id)
+      Company.where(category_id: catefgory_id, sended: false).find_each do |company|
         send_letter(company)
-        sleep(60)
+        sleep(SLEEP_TIME)
       end
     end
 

@@ -1,20 +1,20 @@
 module YandexSearchService
+  COUNT_PAGE = 60
+  SLEEP_TIME = 5
+
   class << self
     def call(query, city_id)
       @query = query
       @city_id = city_id
-      i = 0
-      while i < 60 do
+      for i in 0..COUNT_PAGE
         open_page(get_url(i))
-        i += 1
-        sleep(5)
+        sleep(SLEEP_TIME)
       end
     end
 
 
     def get_url(number_of_page)
       query = URI::encode(@query)
-      pp number_of_page
       Settings.yandex.url+"&lr=213&text=#{query}&p=#{number_of_page}"
     end
 
