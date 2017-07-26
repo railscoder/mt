@@ -50,7 +50,8 @@ module ScanPhoneEmailService
         full_url = "http://" + company.site
         page = open_page(full_url)
         link_to_contact = get_contact_page(page, full_url)
-        email = get_email(page) || get_email(link_to_contact)
+        contact_page = open_page(link_to_contact)
+        email = get_email(page) || get_email(contact_page)
         ActiveRecord::Base.transaction do
           company.email = email
           company.save

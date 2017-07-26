@@ -1,0 +1,8 @@
+<table border="1">
+  <% @companies.each do |company| %>
+    <tr>
+      <td><%= company.site %></td>
+      <td><%= company.email %></td>
+    </tr>
+  <% end %>
+</table>
