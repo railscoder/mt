@@ -1,7 +1,7 @@
 class DeliveryMailWorker
   include Sidekiq::Worker
 
-  def perform
-    MailService.call
+  def perform(category_id)
+    MailService.call(category_id)
   end
 end
