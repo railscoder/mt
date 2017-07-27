@@ -1,4 +1,4 @@
-class MailDeliveryWorker
+class DeliveryMailWorker
   include Sidekiq::Worker
 
   def perform
