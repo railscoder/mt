@@ -14,7 +14,7 @@ module ScanPhoneEmailService
 
     def find_email_on_site(company)
       begin
-        email = find_email(comapny.site)
+        email = find_email(company.site)
         ActiveRecord::Base.transaction do
           company.email = email
           company.save
