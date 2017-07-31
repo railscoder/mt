@@ -3,7 +3,7 @@ module MailService
 
   class << self
     def call(category_id)
-      Company.where(category_id: catefgory_id, sended: false).find_each do |company|
+      Company.where(category_id: category_id, sended: false).find_each do |company|
         send_letter(company)
         sleep(SLEEP_TIME)
       end
