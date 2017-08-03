@@ -14,7 +14,7 @@ module MailService
     def send_letter(company)
       begin
         ActiveRecord::Base.transaction do
-          CompanyMailer.welcome_letter(company.email).deliver_now
+          CompanyMailer.email_marketing(company.email).deliver_now
           company.sended = true
           company.save
         end

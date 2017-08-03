@@ -1,6 +1,4 @@
 module ScanPhoneEmailService
-  EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
-
   class << self
     include ScanEmail
 
@@ -14,7 +12,6 @@ module ScanPhoneEmailService
 
     def find_email_on_site(company)
       begin
-        email = find_email(company.site)
         ActiveRecord::Base.transaction do
           company.email = email
           company.save

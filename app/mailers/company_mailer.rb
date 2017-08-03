@@ -8,4 +8,7 @@ class CompanyMailer < ApplicationMailer
     mail(to: email, subject: "На связи Конюхов!")
   end
 
+  def email_marketing(email)
+    mail(to: email, subject: "Дарим 500 клиентов!")
+  end
 end
