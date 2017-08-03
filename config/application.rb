@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 module MarketTools
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join("lib", "modules")
+    config.active_job.queue_adapter = :sidekiq
   end
 end
