@@ -11,7 +11,6 @@ module YandexSearchService
         open_page(get_url(i))
         sleep(SLEEP_TIME)
       end
-      return @category.id
     end
 
 
