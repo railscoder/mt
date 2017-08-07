@@ -4,14 +4,14 @@ module YandexSearchService
 
   class << self
     def call(query, city_id, client)
-      @query = query
       @city_id = city_id
-      @client = client
+      @category = Category.find_or_create_by!(name: query)
+      @client = Client.find_or_create_by!(name: client)
       for i in 0..COUNT_PAGE
         open_page(get_url(i))
         sleep(SLEEP_TIME)
       end
-      return
+      return @category.id
     end
 
 
@@ -23,10 +23,8 @@ module YandexSearchService
     def open_page(url)
       html = open(url)
       doc = Nokogiri::XML(html)
-      category = Category.find_or_create_by!(name: @query)
-      client = Client.find_or_create_by!(name: @client)
       doc.xpath('//domain').each do |site|
-        company = Company.create(site: site.text, source: "yandex", category_id: category.id, city_id: @city_id, client_id: client.id)
+        company = Company.create(site: site.text, source: "yandex", category_id: @category.id, city_id: @city_id, client_id: @client.id)
       end
     end
   end
