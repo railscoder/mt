@@ -12,7 +12,6 @@ module YandexSearchService
         sleep(SLEEP_TIME)
         pp i
       end
-      return @category.id
     end
 
 
