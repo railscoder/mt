@@ -1,7 +1,9 @@
 class YandexSearchJob < ApplicationJob
   queue_as :default
 
-  def perform(query, city_id, client)
-    YandexSearchService.call(query, city_id, client)
+  def perform(city_id, client)
+    File.open("queries.txt", "r").each_line do |query|
+      YandexSearchService.call(query.chomp, city_id, client)
+    end
   end
 end
