@@ -1,7 +1,7 @@
 class ScanSitesWorker
   include Sidekiq::Worker
 
-  def perform(source, category_id)
-    ScanPhoneEmailService.call(source, category_id)
+  def perform(client_id)
+    ScanPhoneEmailService.call(client_id)
   end
 end
