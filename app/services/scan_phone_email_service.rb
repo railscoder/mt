@@ -3,7 +3,7 @@ module ScanPhoneEmailService
     include ScanEmail
 
     def call(client_id)
-      Company.where(client_id).find_each do |company|
+      Company.where(client_id: client_id).find_each do |company|
         find_email_on_site(company)
       end
     end
