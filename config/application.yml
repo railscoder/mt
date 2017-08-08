@@ -15,6 +15,6 @@ development: &development
     thread_safe: true
 
   yandex:
-    url: "https://yandex.ru/search/xml?user=mischineduard&key=03.306130378:89bd1172ce6ea5771e778ac3d1124ecb"
+    url: "https://yandex.ru/search/xml?user=andrei-miraklinoff&key=03.256072755:a0d2d02457627bd74072bfd4e6b03a17"
     mirror_1: "http://0s.pfqw4zdfpaxhe5i.cmle.ru"
     mirror_2: "http://0s.pfqw4zdfpaxhe5i.nblz.ru"

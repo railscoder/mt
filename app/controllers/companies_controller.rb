@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.where(source: "yandex").uniq
+    @companies = Company.where(category_id: 6).uniq
   end
 end
