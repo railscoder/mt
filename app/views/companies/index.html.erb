@@ -1,7 +1,7 @@
 <table border="1">
   <% @companies.each do |company| %>
     <tr>
-      <td><<%= link_to comapny.site, "http://#{company.site}" %></td>
+      <td><<%= link_to company.site, "http://#{company.site}" %></td>
     </tr>
   <% end %>
 </table>
