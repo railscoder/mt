@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.where(category_id: 6).uniq
+    @companies = Company.where(client_id: 2).uniq
   end
 end
