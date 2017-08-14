@@ -5,7 +5,7 @@ module ScanGisService
     def call(query, city_id, start_page = 1)
       @query, @city_id = query, city_id
       count_pages = get_count_pages(get_url)
-      for i in start_page..count_pages
+      for i in start_page..2
         scan_one_page(get_url, i)
         LoggerService.call("2gis page - #{i}, query - #{@query}")
         sleep(5)

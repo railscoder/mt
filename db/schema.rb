@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807224729) do
+ActiveRecord::Schema.define(version: 20170814193145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,15 +39,18 @@ ActiveRecord::Schema.define(version: 20170807224729) do
     t.string   "site",                        null: false
     t.string   "full_url"
     t.string   "source"
+    t.text     "phones",      default: [],                 array: true
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "category_id"
     t.integer  "city_id"
+    t.integer  "client_id"
     t.string   "email"
     t.boolean  "sended",      default: false
-    t.integer  "client_id"
     t.index ["category_id"], name: "index_companies_on_category_id", using: :btree
     t.index ["city_id"], name: "index_companies_on_city_id", using: :btree
+    t.index ["email", "client_id"], name: "index_companies_on_email_and_client_id", unique: true, using: :btree
+    t.index ["site", "client_id"], name: "index_companies_on_site_and_client_id", unique: true, using: :btree
   end
 
   create_table "emails", force: :cascade do |t|
@@ -60,17 +63,7 @@ ActiveRecord::Schema.define(version: 20170807224729) do
     t.index ["value"], name: "index_emails_on_value", using: :btree
   end
 
-  create_table "phones", force: :cascade do |t|
-    t.string   "value",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "company_id"
-    t.index ["company_id"], name: "index_phones_on_company_id", using: :btree
-    t.index ["value"], name: "index_phones_on_value", using: :btree
-  end
-
   add_foreign_key "companies", "categories"
   add_foreign_key "companies", "cities"
   add_foreign_key "emails", "companies"
-  add_foreign_key "phones", "companies"
 end

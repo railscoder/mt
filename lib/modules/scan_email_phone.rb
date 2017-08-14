@@ -1,5 +1,6 @@
-module ScanEmail
+module ScanEmailPhone
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
+  PHONE_REGEX = /\d{10,11}/
 
   def open_page(url)
     begin
@@ -31,16 +32,42 @@ module ScanEmail
     return unless page
     begin
       all_emails = page.to_s.match(EMAIL_REGEX)
-      email = all_emails[0] if all_emails
+      all_emails[0] if all_emails
     rescue
     end
   end
 
-  def find_email(site)
+  def get_phone(page)
+    return unless page
+    begin
+      all_phones = delete_symbols(page).scan(PHONE_REGEX)
+      return unless all_phones
+      all_phones.select! { |phone| phone.match(/9{6}/).nil? }
+      all_phones.map! do |phone|
+        if phone.size == 10
+          phone = "8" + phone
+        else
+          phone[0] = "8"
+          phone
+        end
+      end
+      all_phones
+    rescue
+    end
+  end
+
+  def find_email_phone(site)
     full_url = "http://" + site
     page = open_page(full_url)
     link_to_contact = get_contact_page(page, full_url)
     contact_page = open_page(link_to_contact)
     email = get_email(page) || get_email(contact_page)
+    phone = get_phone(page) || get_phone(contact_page)
+    return email, phone
+  end
+
+  def delete_symbols(page)
+    page.to_s.gsub(/<\/?[^>]*>/,"").
+    gsub(/[-()-+ ]/,"")
   end
 end

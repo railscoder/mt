@@ -1,24 +1,23 @@
 module ScanPhoneEmailService
   class << self
-    include ScanEmail
+    include ScanEmailPhone
 
-    def call(category_id)
-      Company.where(category_id: category_id).find_each do |company|
-        find_email_on_site(company)
+    def call(client_id)
+      Company.where(client_id: client_id).find_each do |company|
+        find_email_on_site(company.site)
       end
     end
 
     private
 
-    def find_email_on_site(company)
+    def find_email_on_site(site)
       begin
-        full_url = "http://" + company.site
-        page = open_page(full_url)
-        link_to_contact = get_contact_page(page, full_url)
-        contact_page = open_page(link_to_contact)
-        email = get_email(page) || get_email(contact_page)
+        info = find_email_phone(site)
+        email =  info[0]
+        phones = info[1]
         ActiveRecord::Base.transaction do
           company.email = email
+          company.phones = phones
           company.save
         end
       rescue Exception => e

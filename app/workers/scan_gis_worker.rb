@@ -5,4 +5,5 @@ class ScanGisWorker
     ScanGisService.call(query, city_id, start_page)
   end
   # Sidekiq::Queue.all.each(&:clear)
+  # bundle exec sidekiq -d --logfile logfile2.log
 end
