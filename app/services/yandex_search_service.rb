@@ -10,6 +10,7 @@ module YandexSearchService
       for i in 0..COUNT_PAGE
         open_page(get_url(i))
         sleep(SLEEP_TIME)
+        pp i
       end
       return
     end
