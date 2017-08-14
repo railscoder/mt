@@ -12,14 +12,14 @@ module ScanPhoneEmailService
 
     def find_email_on_site(site)
       begin
-        info = find_email_phone(site)
-        email =  info[0]
-        phones = info[1]
-        ActiveRecord::Base.transaction do
-          company.email = email
-          company.phones = phones
-          company.save
-        end
+        find_email_phone(site)
+        #email =  info[0]
+        #phones = info[1]
+        #ActiveRecord::Base.transaction do
+        #  company.email = email
+        #  company.phones = phones
+        #  company.save
+        #end
       rescue Exception => e
         LoggerService.call("Error - #{e} from #{full_url}")
       end
