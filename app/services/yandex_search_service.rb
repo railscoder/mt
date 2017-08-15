@@ -26,7 +26,8 @@ module YandexSearchService
       category = Category.find_or_create_by!(name: @query)
       client = Client.find_or_create_by!(name: @client)
       doc.xpath('//domain').each do |site|
-        company = Company.create(site: site.text, source: "yandex", category_id: category.id, city_id: @city_id, client_id: client.id)
+        pp site.text
+        #company = Company.create(site: site.text, source: "yandex", category_id: category.id, city_id: @city_id, client_id: client.id)
       end
     end
   end

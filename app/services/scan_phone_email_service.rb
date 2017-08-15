@@ -19,9 +19,8 @@ module ScanPhoneEmailService
         email = get_email(page) || get_email(contact_page)
         phones = get_phone(page) || get_phone(contact_page)
         ActiveRecord::Base.transaction do
-          company.email = email
-          company.save
-          company.phones = phones
+          company.email = email if company.email.nil?
+          company.phones = phones  if company.phones.empty?
           company.save
         end
       rescue Exception => e
