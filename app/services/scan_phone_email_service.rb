@@ -2,8 +2,8 @@ module ScanPhoneEmailService
   class << self
     include ScanEmailPhone
 
-    def call(client_id)
-      Company.where(client_id: client_id).find_each do |company|
+    def call(client_id, category_id)
+      Company.where(client_id: client_id, category_id: category_id).find_each do |company|
         find_email_on_site(company)
       end
     end
