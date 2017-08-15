@@ -1,6 +1,6 @@
 module ScanEmailPhone
   EMAIL_REGEX = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
-  PHONE_REGEX = /\d{10,11}/
+  PHONE_REGEX = /\D[7,8]\d{10}\D/
 
   def open_page(url)
     begin
@@ -44,14 +44,10 @@ module ScanEmailPhone
       return unless all_phones
       all_phones.select! { |phone| phone.match(/9{6}/).nil? }
       all_phones.map! do |phone|
-        if phone.size == 10
-          phone = "8" + phone
-        else
-          phone[0] = "8"
-          phone
-        end
+        phone[1] = "8"
+        phone[1,11]
       end
-      all_phones
+      all_phones.uniq[0,5]
     rescue
     end
   end
