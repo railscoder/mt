@@ -5,6 +5,7 @@ module ScanGisService
     def call(query, city_id, client, start_page = 1)
       @query, @city_id = query, city_id
       count_pages = get_count_pages(get_url)
+      @client = Client.find_or_create_by!(name: client)
       for i in start_page..count_pages
         scan_one_page(get_url, i)
         LoggerService.call("2gis page - #{i}, query - #{@query}")
@@ -31,7 +32,7 @@ module ScanGisService
         site = get_site(page_item)
         ActiveRecord::Base.transaction do
           category = Category.find_or_create_by!(name: @query)
-          company = Company.create(site: site, name: name, phones: [phone],source: "2gis", category_id: category.id, city_id: @city_id)
+          company = Company.create(site: site, name: name, phones: [phone],source: "2gis", category_id: category.id, city_id: @city_id, client_id: @client_id)
         end
       end
   end
