@@ -32,7 +32,7 @@ module ScanGisService
         site = get_site(page_item)
         ActiveRecord::Base.transaction do
           category = Category.find_or_create_by!(name: @query)
-          company = Company.create(site: site, name: name, phones: [phone],source: "2gis", category_id: category.id, city_id: @city_id, client_id: @client_id)
+          company = Company.create(site: site, name: name, phones: [phone],source: "2gis", category_id: category.id, city_id: @city_id, client_id: @client.id)
         end
       end
   end
