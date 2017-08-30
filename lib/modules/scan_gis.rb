@@ -6,9 +6,9 @@ module ScanGis
     doc = Nokogiri::HTML(html)
   end
 
-  def get_url
+  def get_url(city_id)
     query = URI::encode(@query)
-    city_name = City.find(@city_id).eng_name
+    city_name = City.find(city_id).eng_name
     Settings.gis.url+"/#{city_name}/search/#{query}"
   end
 
