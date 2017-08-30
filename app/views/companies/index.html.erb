@@ -1,7 +1,9 @@
 <table border="1">
   <% @companies.each do |company| %>
     <tr>
-      <td><<%= link_to company.site, "http://#{company.site}" %></td>
+      <td><%= company.site%></td>
+      <td><%= company.email.gsub("%20","") %></td>
+      <td><%= company.phones.first.scan(/\d+/).join if company.phones.first %></td>
     </tr>
   <% end %>
 </table>

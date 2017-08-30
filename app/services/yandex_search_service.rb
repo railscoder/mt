@@ -1,5 +1,5 @@
 module YandexSearchService
-  COUNT_PAGE = 40
+  COUNT_PAGE = 30
   SLEEP_TIME = 5
 
   class << self
