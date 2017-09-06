@@ -55,11 +55,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
     logger:               true,
-    address:              "smtp.mail.ru",
-    port:                 587,
+    address:              "188.227.19.21",
+    port:                 25,
     domain:               "konyhov.com",
     user_name:            "no-reply@konyhov.com",
     password:             "18611861aA",
     authentication:       "plain",
-    enable_starttls_auto: true  }
+    enable_starttls_auto: false  }
 end

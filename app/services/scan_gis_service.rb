@@ -2,18 +2,19 @@ module ScanGisService
   class << self
     include ScanGis
 
-    def call(query, client, city_ids = [], start_page=1, start_city_id=1)
+    def call(query, client, city_ids = [], start_page, start_city_id)
      city_ids = City.pluck(:id) if city_ids == "all"
       @query = query
       @client = Client.find_or_create_by!(name: client)
-      city_ids.each do |city_id|
-        count_pages = get_count_pages(get_url(city_id))
+      city_ids.select {|id| id > start_city_id}.each do |city_id|
+        city_url = get_url(city_id)
+        count_pages = get_count_pages(city_url)
         for i in start_page..count_pages
-          scan_one_page(get_url, i, city_id)
+          scan_one_page(city_url, i, city_id)
           LoggerService.call("2gis page - #{i}, query - #{@query}")
           sleep(5)
         end
-        sleep(1800)
+        sleep(600)
       end
     end
 
